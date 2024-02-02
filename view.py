@@ -46,6 +46,7 @@ class GUI(QMainWindow):
 
     def _createButtons(self):
         """Create the buttons."""
+        def _createButtons(self):
         self.buttons = {}
         buttonsLayout = QGridLayout()
         # Button text | position on the QGridLayout
@@ -70,6 +71,20 @@ class GUI(QMainWindow):
                    '+': (3, 3),
                    '=': (3, 4),
                   }
+        length_conversion_buttons = {
+            'mm_to_cm': (4, 0),
+            'cm_to_mm': (4, 1),
+            'm_to_cm': (4, 2),
+            'cm_to_m': (4, 3),
+            'inch_to_cm': (4, 4),
+            'cm_to_inch': (5, 0),
+        }
+
+        for btnText, pos in length_conversion_buttons.items():
+            self.buttons[btnText] = QPushButton(btnText.replace('_', ' '))
+            self.buttons[btnText].setFixedSize(80, 40)
+            buttonsLayout.addWidget(self.buttons[btnText], pos[0], pos[1])
+
         # Create the buttons and add them to the grid layout
         for btnText, pos in buttons.items():
             self.buttons[btnText] = QPushButton(btnText)
